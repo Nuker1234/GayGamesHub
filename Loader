@@ -1,0 +1,14 @@
+local function notify(text,time)
+	game.StarterGui:SetCore("SendNotification", {
+	Title = "GayHub";
+	Text = text;
+	Duration = time;
+	Callback = NotificationBindable;
+	})
+end
+
+if game.PlaceId == 10011958897 then
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/Nuker1234/GayGamesHub/main/RLC"))()
+else
+notify("No script was found for this game!",5)
+end
